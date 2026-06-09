@@ -2,7 +2,8 @@ option=$(gum choose \
         "Brightness +10%" \
 		"Brightness -10%" \
 		"Max Brightness" \
-		"Set Brightness"  )
+		"Set Brightness" \
+        "Back" ) 
 
 case "$option" in
 		"Brightness +10%")
@@ -43,5 +44,7 @@ case "$option" in
 			wait 0.2
 
 			;;
+        "Back")
+        ;;
 esac
 

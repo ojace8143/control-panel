@@ -16,7 +16,7 @@ do
      	"Control Panel
 	
     	 Volume: ${volume}%
-	 Brightness: ${brightness_percent}%
+	     Brightness: ${brightness_percent}%
         "
 
     choice=$(gum choose \
@@ -24,6 +24,7 @@ do
         "Brightness" \
     	"Power" \
         "System Info" \
+        "Misc" \
         "Quit")
 
     case "$choice" in
@@ -35,15 +36,28 @@ do
     ;;
 	"Power")
 		option=$(gum choose \
-			"" \
-			"" \
-			"Shutdown" )
+			"Shutdown" \
+            "Back" ) 
+        
+        case "$option" in
+            "Shutdown")
+            if gum confirm "Shutdown computer?"
+                then
+                shutdown now
+            fi
+            ;;
+            "Back")
+            ;;  
+        esac
 	    ;;
         "System Info")
             gum confirm "System info coming soon!"
-            ;;
+        ;;
+        "Misc")
+        source subscripts/misc.sh
+        ;;
         "Quit")
             exit
-            ;;
+        ;;
     esac
 done

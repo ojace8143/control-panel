@@ -7,12 +7,13 @@ Features:
  -
 
 Dependencies: 
- - Gum          (UI)
- - pactl        (Audio Control)
- - brightnessctl
+ - Gum           (UI)
+ - pactl         (Audio Control)
+ - wpctl         (Audo Control)
+ - brightnessctl (Brightness Control)
 
   To install (pacman)
-   - sudo pacman -S gum brightnessctl pactl
+   - sudo pacman -S gum brightnessctl pactl wpctl
 
 
 Written by: Jace Orcutt

@@ -1,8 +1,10 @@
 #!/bin/bash
+gum style "Volume Options"
 option=$(gum choose \
 	"Vol +10" \
 	"Vol -10" \
-	"Set Vol" )
+	"Set Vol" \
+    "Back"    ) 
 
  case "$option" in 
 	 "Vol +10")
@@ -36,5 +38,7 @@ option=$(gum choose \
 
 	wait 0.2
 
-	;;	
+	;;
+    "Back")
+    ;;	
 esac
