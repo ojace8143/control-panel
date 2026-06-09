@@ -1,0 +1,95 @@
+#!/bin/bash
+while true
+do
+    clear
+
+    volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')
+
+    brightness=$(brightnessctl get)
+    max=$(brightnessctl max)
+    brightness_percent=$(( 100 * brightness / max))
+
+    gum style \
+        --border rounded \
+        --padding "1 2" \
+        --align center \
+     	"Control Panel
+	
+    	 Volume: ${volume}%
+	 Brightness: ${brightness_percent}%
+        "
+
+    choice=$(gum choose \
+        "Volume" \
+        "Brightness" \
+	"Power" \
+        "System Info" \
+        "Quit")
+
+    case "$choice" in
+        "Volume")
+	source ~/Scripts/control_panel/subscripts/volume.sh
+	    ;;
+        "Brightness")
+		option=$(gum choose \
+			"Brightness +10%" \
+			"Brightness -10%" \
+			"Max Brightness" \
+			"Set Brightness"  )
+
+		case "$option" in
+			"Brightness +10%")
+				if gum confirm "Increase brightness by 10%?"
+					then
+					brightnessctl set +10%
+				fi
+
+				wait 0.2
+
+				;;
+			"Brightness -10%")
+				if gum confirm "Decrease brightness by 10%?"
+					then
+					brightnessctl set 10%-
+				fi
+				
+				wait 0.2
+
+				;;
+			"Max Brightness")
+				if gum confirm "Set brightness to max?"
+					then
+					brightnessctl set 100%
+				fi
+				
+				wait 0.2
+
+				;;
+			"Set Brightness")
+				num=$(gum input --placeholder "Brightness Percent")
+
+				if gum confirm "Set brightness to ${num}%?"
+					then
+					brightnessctl set ${num}%
+				fi
+
+				wait 0.2
+
+				;;
+
+		esac
+            ;;
+	"Power")
+		option=$(gum choose \
+			"" \
+			"" \
+			"Shutdown" )
+	    ;;
+        "System Info")
+            gum confirm "System info coming soon!"
+            ;;
+        "Quit")
+            exit
+            ;;
+    esac
+done
