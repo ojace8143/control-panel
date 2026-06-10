@@ -4,7 +4,7 @@ Features:
  - System info display
  - Modular Script System
  - Terminal UI via gum
- -
+ - Password Generator
 
 Dependencies: 
  - Gum           (UI)

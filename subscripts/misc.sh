@@ -8,6 +8,7 @@ option=$(gum choose \
 case "$option" in
     "Generate Password")
     python3 passwdgen.py
+    wait 20
     ;;
     "Back")
     ;;
