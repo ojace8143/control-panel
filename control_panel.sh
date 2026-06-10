@@ -37,6 +37,7 @@ do
 	"Power")
 		option=$(gum choose \
 			"Shutdown" \
+            "Use Battery Optimization" \
             "Back" ) 
         
         case "$option" in
@@ -45,6 +46,10 @@ do
                 then
                 shutdown now
             fi
+            ;;
+            "Use Battery Optimization")
+            source subscripts/battery.sh
+            exit
             ;;
             "Back")
             ;;  

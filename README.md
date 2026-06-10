@@ -18,5 +18,6 @@ Dependencies:
 
 Tips:
  - Make an alias of conrol_panel.sh for easy access
+ - Run .install_dependencies.sh to ensure all features work
 
 Written by: Jace Orcutt
