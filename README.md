@@ -13,8 +13,8 @@ Dependencies:
  - brightnessctl (Brightness Control)
  - cpupower  (CPU Power and Performance Tweaks)
 
-  To install (pacman)
-   - sudo pacman -S gum brightnessctl pactl wpctl cpupower
+  To install (Run in control_panel)
+    - source ./.install_dependencies.sh
 
 Tips:
  - Make an alias of conrol_panel.sh for easy access
